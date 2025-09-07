@@ -1,33 +1,39 @@
 @extends('polls.layout')
 
 @section('content')
-<h3>{{ $poll->question }}</h3>
+<div class="card p-5 shadow-sm">
+    <h3 class="fw-bold">{{ $poll->question }}</h3>
 
-@if($poll->expires_at && $poll->expires_at < now())
-<div class="alert alert-warning">This poll has expired.</div>
-@endif
+    @if($poll->expires_at && $poll->expires_at < now())
+        <div class="alert alert-warning mt-3 text-center">This poll has expired.</div>
+    @endif
 
-@if($poll->votes->count())
-<ul class="list-group mb-3">
-    @foreach($poll->options as $option)
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            {{ $option->text }}
-            <span class="badge bg-primary">{{ $option->votes->count() }} votes</span>
-        </li>
-    @endforeach
-</ul>
-@endif
+    @if($poll->votes->count())
+        <h5 class="mt-4 fw-semibold">Results:</h5>
+        @foreach($poll->options as $option)
+            @php
+                $percent = $poll->votes->count() ? round(($option->votes->count() / $poll->votes->count()) * 100) : 0;
+            @endphp
+            <div class="mb-3">
+                <strong>{{ $option->text }}</strong>
+                <div class="vote-bar" style="width: {{ $percent }}%;">{{ $percent }}%</div>
+            </div>
+        @endforeach
+    @endif
 
-@if(!$poll->expires_at || $poll->expires_at > now())
-<form method="POST" action="{{ route('polls.vote', $poll) }}">
-    @csrf
-    @foreach($poll->options as $option)
-        <div class="form-check">
-            <input type="radio" name="option_id" value="{{ $option->id }}" class="form-check-input" required>
-            <label class="form-check-label">{{ $option->text }}</label>
-        </div>
-    @endforeach
-    <button type="submit" class="btn btn-success mt-2">Vote</button>
-</form>
-@endif
+    @if(!$poll->expires_at || $poll->expires_at > now())
+    <form method="POST" action="{{ route('polls.vote', $poll) }}" class="mt-4">
+        @csrf
+        @foreach($poll->options as $option)
+            <div class="form-check mb-2">
+                <input type="radio" name="option_id" value="{{ $option->id }}" class="form-check-input" required>
+                <label class="form-check-label">{{ $option->text }}</label>
+            </div>
+        @endforeach
+        <button type="submit" class="btn btn-success mt-3 w-100 fw-bold">
+            <i class="fa-solid fa-check"></i> Vote
+        </button>
+    </form>
+    @endif
+</div>
 @endsection
