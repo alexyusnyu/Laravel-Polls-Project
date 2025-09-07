@@ -100,12 +100,6 @@ You should see the polls list, be able to create new polls, vote, and view resul
 
 ---
 
-## Extra Features / Notes
-
-* Session-based vote tracking prevents multiple votes from the same user.
-* Polls can optionally have expiration dates.
-* Built for simplicity and clarity, with server-side Blade templates and Bootstrap styling.
-
 ## Screenshots
 
 ![Screenshot 1](screenshot1.png)
