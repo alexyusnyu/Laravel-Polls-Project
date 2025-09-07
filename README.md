@@ -7,9 +7,9 @@ A simple Laravel application that allows users to create polls, vote on them, an
 ## Features
 
 * Create polls with a question and multiple options.
-* Vote on poll options (supports anonymous users using session tracking).
+* Vote on polls.
 * View poll results with vote counts.
-* Optional poll expiration dates.
+* Delete polls.
 * Built with Laravel 12, Bootstrap 5, and SQLite.
 
 ---
@@ -105,3 +105,15 @@ You should see the polls list, be able to create new polls, vote, and view resul
 * Session-based vote tracking prevents multiple votes from the same user.
 * Polls can optionally have expiration dates.
 * Built for simplicity and clarity, with server-side Blade templates and Bootstrap styling.
+
+## Screenshots
+
+![Screenshot 1](screenshot1.png)
+
+![Screenshot 2](screenshot2.png)
+
+![Screenshot 3](screenshot3.png)
+
+![Screenshot 4](screenshot4.png)
+
+![Screenshot 5](screenshot5.png)
