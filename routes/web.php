@@ -11,3 +11,5 @@ Route::post('/polls', [PollController::class, 'store'])->name('polls.store');
 
 Route::get('/polls/{poll}', [PollController::class, 'show'])->name('polls.show');
 Route::post('/polls/{poll}/vote', [VoteController::class, 'store'])->name('polls.vote');
+
+Route::delete('/polls/{poll}', [PollController::class, 'destroy'])->name('polls.destroy');

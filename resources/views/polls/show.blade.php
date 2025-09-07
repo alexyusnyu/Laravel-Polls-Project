@@ -35,5 +35,14 @@
         </button>
     </form>
     @endif
+
+    <!-- Delete button -->
+    <form action="{{ route('polls.destroy', $poll) }}" method="POST" class="mt-4" onsubmit="return confirm('Are you sure you want to delete this poll?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger w-100">
+            <i class="fa-solid fa-trash"></i> Delete Poll
+        </button>
+    </form>
 </div>
 @endsection

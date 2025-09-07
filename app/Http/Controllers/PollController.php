@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Poll;
+use App\Models\Option;
+use App\Models\Vote;
 use Illuminate\Http\Request;
 
 class PollController extends Controller
 {
     public function index()
     {
-        $polls = Poll::latest()->paginate(10);
+        $polls = Poll::latest()->paginate(6);
         return view('polls.index', compact('polls'));
     }
 
@@ -20,29 +22,50 @@ class PollController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'question' => 'required|string|max:255',
-            'options' => 'required|array|min:2',
             'options.*' => 'required|string|max:255',
-            'expires_at' => 'nullable|date',
         ]);
 
         $poll = Poll::create([
-            'question' => $data['question'],
-            'expires_at' => $data['expires_at'] ?? null,
+            'question' => $request->question,
+            'expires_at' => $request->expires_at ?? null
         ]);
 
-        foreach ($data['options'] as $opt) {
-            $poll->options()->create(['text' => $opt]);
+        foreach ($request->options as $option) {
+            $poll->options()->create(['text' => $option]);
         }
 
-        return redirect()->route('polls.show', $poll)->with('success', 'Poll created.');
+        return redirect()->route('polls.index')->with('success', 'Poll created successfully.');
     }
 
     public function show(Poll $poll)
     {
-        $poll->load('options.votes');
-        $totalVotes = $poll->votes()->count();
-        return view('polls.show', compact('poll', 'totalVotes'));
+        $poll->load('options.votes', 'votes');
+        return view('polls.show', compact('poll'));
+    }
+
+    public function vote(Request $request, Poll $poll)
+    {
+        $request->validate(['option_id' => 'required|exists:options,id']);
+
+        $option = $poll->options()->findOrFail($request->option_id);
+        $option->votes()->create();
+
+        return redirect()->route('polls.show', $poll)->with('success', 'Your vote has been counted!');
+    }
+
+    // Delete Poll
+    public function destroy(Poll $poll)
+    {
+        
+        $poll->options()->each(function ($option) {
+            $option->votes()->delete();
+            $option->delete();
+        });
+        $poll->votes()->delete(); 
+        $poll->delete();
+
+        return redirect()->route('polls.index')->with('success', 'Poll deleted successfully.');
     }
 }
