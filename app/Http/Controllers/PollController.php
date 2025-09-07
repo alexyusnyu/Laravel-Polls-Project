@@ -55,15 +55,13 @@ class PollController extends Controller
         return redirect()->route('polls.show', $poll)->with('success', 'Your vote has been counted!');
     }
 
-    // Delete Poll
     public function destroy(Poll $poll)
     {
-        
         $poll->options()->each(function ($option) {
             $option->votes()->delete();
             $option->delete();
         });
-        $poll->votes()->delete(); 
+        $poll->votes()->delete();
         $poll->delete();
 
         return redirect()->route('polls.index')->with('success', 'Poll deleted successfully.');

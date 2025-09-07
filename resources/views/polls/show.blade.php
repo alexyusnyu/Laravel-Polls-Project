@@ -23,7 +23,6 @@
         @endforeach
     @endif
 
-    @if(!$poll->expires_at || $poll->expires_at > now())
     <form method="POST" action="{{ route('polls.vote', $poll) }}" class="mt-4">
         @csrf
         @foreach($poll->options as $option)
@@ -36,7 +35,6 @@
             <i class="fa-solid fa-check"></i> Vote
         </button>
     </form>
-    @endif
 
     <form action="{{ route('polls.destroy', $poll) }}" method="POST" class="mt-4" onsubmit="return confirm('Are you sure you want to delete this poll?');">
         @csrf
