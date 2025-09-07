@@ -16,7 +16,9 @@
             @endphp
             <div class="mb-3">
                 <strong>{{ $option->text }}</strong>
-                <div class="vote-bar" style="width: {{ $percent }}%;">{{ $percent }}%</div>
+                <div class="vote-bar-container">
+                    <div class="vote-bar" style="width: {{ $percent }}%;" data-percent="{{ $percent }}"></div>
+                </div>
             </div>
         @endforeach
     @endif
@@ -36,7 +38,6 @@
     </form>
     @endif
 
-    <!-- Delete button -->
     <form action="{{ route('polls.destroy', $poll) }}" method="POST" class="mt-4" onsubmit="return confirm('Are you sure you want to delete this poll?');">
         @csrf
         @method('DELETE')
