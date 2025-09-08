@@ -29,7 +29,7 @@ A simple Laravel application that allows users to create polls, vote on them, an
 1. **Clone the repository:**
 
 ```bash
-git clone <https://github.com/alexyusnyu/Laravel-Polls-Project>
+git clone https://github.com/alexyusnyu/Laravel-Polls-Project
 cd Laravel-Polls-Project
 ```
 
@@ -41,6 +41,12 @@ composer install
 
 3. **Set up environment file:**
 
+*For Linux/macOS
+```bash
+cp .env.example .env
+```
+
+*For Windows
 ```bash
 copy .env.example .env
 ```
@@ -51,12 +57,19 @@ Open `.env` and set:
 
 ```env
 DB_CONNECTION=sqlite
-DB_DATABASE=(Location)\Laravel-Polls-Project\database\database.sqlite
+DB_DATABASE=absolute/path/to/Laravel-Polls-Project/database/database.sqlite
 DB_FOREIGN_KEYS=true
 ```
 
-Make sure to create the SQLite file:
+Create the SQLite database file:
 
+*For Linux/macOS
+
+```bash
+touch database/database.sqlite
+```
+
+*For Windows:
 ```bash
 type nul > database\database.sqlite
 ```
