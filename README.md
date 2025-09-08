@@ -110,8 +110,25 @@ You should see the polls list, be able to create new polls, vote, and view resul
 * `database/seeders` — Example poll and test user seeding.
 * `resources/views/polls` — Blade templates for index, create, and show poll pages.
 * `routes/web.php` — Application routes.
-
+* `tests/Unit` — Unit tests.
 ---
+
+Unit Tests
+
+The project includes the following tests:
+
+PollRelationsTest — Unit test to ensure a poll has many options.
+
+PollCreationTest — Feature test to verify polls can be created with options.
+
+PollDeleteTest — Feature test to verify polls can be deleted successfully.
+
+To run all tests:
+
+```bash
+php artisan test
+```
+
 
 ## Screenshots
 
@@ -124,3 +141,6 @@ You should see the polls list, be able to create new polls, vote, and view resul
 ![Screenshot 4](screenshot4.png)
 
 ![Screenshot 5](screenshot5.png)
+
+![Screenshot 6](screenshot6.png)
+
