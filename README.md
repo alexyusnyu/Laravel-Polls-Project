@@ -27,6 +27,8 @@ A simple Laravel application that allows users to create polls, vote on them, an
 
 ## Installation
 
+# Option 1
+
 1. **Clone the repository:**
 
 ```bash
@@ -101,7 +103,21 @@ Open your browser and visit: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 You should see the polls list, be able to create new polls, vote, and view results.
 
----
+# Option 2: Using Docker
+
+1. Build and start the Docker container:
+
+```bash
+docker-compose up --build
+```
+
+2. Run migrations and seed the database inside the container:
+
+```bash
+docker-compose exec app php artisan migrate --seed
+```
+
+3. Open your browser and visit: http://localhost:8000
 
 ## Project Structure
 
