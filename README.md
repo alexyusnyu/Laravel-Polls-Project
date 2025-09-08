@@ -10,6 +10,7 @@ A simple Laravel application that allows users to create polls, vote on them, an
 * Vote on polls.
 * View poll results with vote counts.
 * Delete polls.
+* Poll expiration date
 * Built with Laravel 12, Bootstrap 5, and SQLite.
 
 ---
