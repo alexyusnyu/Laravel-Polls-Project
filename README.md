@@ -113,7 +113,7 @@ You should see the polls list, be able to create new polls, vote, and view resul
 * `tests/Unit` — Unit tests.
 ---
 
-Unit Tests
+## Unit and Feature Tests
 
 The project includes the following tests:
 
