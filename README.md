@@ -58,31 +58,33 @@ DB_FOREIGN_KEYS=true
 
 1. **Create SQLite database file:**
 
-# Linux/macOS
+```Linux/macOS
 touch database/database.sqlite
+```
 
-# Windows (PowerShell)
+```Windows (PowerShell)
 New-Item -Path .\database\database.sqlite -ItemType File
+```
 
-# Windows (cmd.exe)
+```Windows (cmd.exe)
 type nul > database\database.sqlite
-
+```
 
 6. **Generate application key:**
 
-```powershell
+```
 php artisan key:generate
 ```
 
 7. **Run migrations and seed the database:**
 
-```powershell
+```
 php artisan migrate --seed
 ```
 
 8. **Start the development server:**
 
-```powershell
+```
 php artisan serve
 ```
 
@@ -97,20 +99,25 @@ Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 
 ### 1. Create SQLite database file
 
-```
-# Linux/macOS
+```Linux/macOS
 touch database/database.sqlite
+```
 
-# Windows (PowerShell)
+```Windows (PowerShell)
 New-Item -Path .\database\database.sqlite -ItemType File
+```
 
-# Windows (cmd.exe)
+```Windows (cmd.exe)
 type nul > database\database.sqlite
 ```
 
-Make sure `.env` exists:
+## Make sure `.env` exists:
 
-```powershell
+```Linux/macOS
+cp .env.example .env
+```
+
+```Windows (PowerShell)
 copy .env.example .env
 ```
 
@@ -118,7 +125,7 @@ copy .env.example .env
 
 ### 2. Build and start Docker
 
-```powershell
+```
 docker-compose up --build -d
 ```
 
@@ -126,7 +133,7 @@ docker-compose up --build -d
 
 ### 3. Inside the container: Laravel setup
 
-```powershell
+```
 docker-compose exec app composer install
 docker-compose exec app php artisan key:generate
 docker-compose exec app php artisan migrate --seed
@@ -142,11 +149,11 @@ Visit [http://localhost:8000](http://localhost:8000) in your browser. Your polls
 
 ## Running Tests
 
-```
-# Local
+```Local
 php artisan test
+```
 
-# Docker
+```Docker
 docker-compose exec app php artisan test
 ```
 
