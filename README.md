@@ -97,6 +97,7 @@ Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 
 ### 1. Create SQLite database file
 
+```
 # Linux/macOS
 touch database/database.sqlite
 
@@ -105,7 +106,7 @@ New-Item -Path .\database\database.sqlite -ItemType File
 
 # Windows (cmd.exe)
 type nul > database\database.sqlite
-
+```
 
 Make sure `.env` exists:
 
