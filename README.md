@@ -17,7 +17,7 @@ A simple Laravel application that allows users to create polls, vote on them, an
 
 ## Requirements
 
-* Docker Desktop (for Windows)
+* Docker Desktop 
 * PHP 8.2+ and Composer (only for local development, optional if using Docker)
 * SQLite
 
@@ -25,24 +25,24 @@ A simple Laravel application that allows users to create polls, vote on them, an
 
 ---
 
-## Option 1: Run Locally (Without Docker)
+## Option 1: Run Locally 
 
 1. **Clone the repository:**
 
-```powershell
+```
 git clone https://github.com/alexyusnyu/Laravel-Polls-Project
 cd Laravel-Polls-Project
 ```
 
 2. **Install dependencies:**
 
-```powershell
+```
 composer install
 ```
 
 3. **Set up environment file:**
 
-```powershell
+```
 copy .env.example .env
 ```
 
@@ -54,13 +54,19 @@ DB_DATABASE=absolute/path/to/Laravel-Polls-Project/database/database.sqlite
 DB_FOREIGN_KEYS=true
 ```
 
-> Replace `absolute/path/to/...` with your full Windows path.
+> Replace `absolute/path/to/...` with your full path.
 
-5. **Create SQLite database file:**
+1. **Create SQLite database file:**
 
-```powershell
+# Linux/macOS
+touch database/database.sqlite
+
+# Windows (PowerShell)
 New-Item -Path .\database\database.sqlite -ItemType File
-```
+
+# Windows (cmd.exe)
+type nul > database\database.sqlite
+
 
 6. **Generate application key:**
 
@@ -142,9 +148,15 @@ services:
 
 ### 3. Create SQLite database file
 
-```powershell
+# Linux/macOS
+touch database/database.sqlite
+
+# Windows (PowerShell)
 New-Item -Path .\database\database.sqlite -ItemType File
-```
+
+# Windows (cmd.exe)
+type nul > database\database.sqlite
+
 
 Make sure `.env` exists:
 
@@ -180,7 +192,7 @@ Visit [http://localhost:8000](http://localhost:8000) in your browser. Your polls
 
 ## Running Tests
 
-```powershell
+```
 # Local
 php artisan test
 
