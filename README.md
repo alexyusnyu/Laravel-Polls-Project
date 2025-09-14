@@ -56,7 +56,7 @@ DB_FOREIGN_KEYS=true
 
 > Replace `absolute/path/to/...` with your full path.
 
-1. **Create SQLite database file:**
+5. **Create SQLite database file:**
 
 ```Linux/macOS
 touch database/database.sqlite
