@@ -131,7 +131,7 @@ docker-compose up --build -d
 
 ---
 
-### 3. Inside the container: Laravel setup
+### 3. Laravel setup
 
 ```
 docker-compose exec app composer install
